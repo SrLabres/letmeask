@@ -14,6 +14,7 @@ import { database } from '../services/firebase';
 
 
 
+
 export function Home() {
     const history = useHistory();
     const { user, signInWithGoogle } = useAuth()
@@ -26,9 +27,11 @@ export function Home() {
     }
 
     async function handleJoinRomm(event: FormEvent) {
+
         event.preventDefault();
 
         if (roomCode.trim() == '') {
+
             return;
         }
 
@@ -76,6 +79,7 @@ export function Home() {
 
 
                 </div>
+
             </main>
         </div>
     )

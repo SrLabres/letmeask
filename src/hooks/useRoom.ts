@@ -63,6 +63,10 @@ export function useRoom(roomId: string) {
             setTitle(databaseRoom.title);
             setQuestions(parsedQuestions.sort(function (a, b) {
                 return a.likeCount > b.likeCount ? -1 : a.likeCount < b.likeCount ? 1 : 0;
+            }).sort(function (a, b) {
+                return a.isHighlighted > b.isHighlighted ? -1 : a.isHighlighted < b.isHighlighted ? 1 : 0
+            }).sort(function (a, b) {
+                return a.isAnswered > b.isAnswered ? 1 : a.isAnswered < b.isAnswered ? -1 : 0
             }));
 
         })

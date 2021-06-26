@@ -27,7 +27,7 @@ export function NewRoom() {
 
         })
 
-        history.push(`/rooms/${firebasRoom.key}`);
+        history.push(`/admin/rooms/${firebasRoom.key}`);
 
     }
     return (

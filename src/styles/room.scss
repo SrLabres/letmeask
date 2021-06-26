@@ -72,6 +72,7 @@
             justify-content: space-between;
             align-items: center;
             margin-top: 16px;
+            gap: 20px;
             
 
             .user-info {
@@ -112,7 +113,11 @@
         }
     }
 }}
-
+.noQUestion{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
 @media only screen and (max-width: 760px){
     header {
         .content{

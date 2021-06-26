@@ -3,6 +3,7 @@
     align-items: stretch;
     height: 100vh;
     
+    
     aside{
         flex: 7;
         background: #835afd;
@@ -11,6 +12,11 @@
         flex-direction: column;
         justify-content: center;
         padding: 120px 80px;
+        background: linear-gradient(45deg, #835afd, #835afd, #f05af9, #f759f9);
+        animation: bg-pan-bottom 8s infinite alternate both;
+        background-size: 300% 300%;
+
+    
     
         img {
             max-width: 320px;
@@ -145,8 +151,19 @@
         flex-direction: column;
         height: 200px;
         
+        h2 {
+            margin-top: 0;
+        }
         main {
             padding: 10px 20px;
+
+            img {
+                transform: scale(0.5);
+            }
+        }
+
+        .create-room{
+            margin-top: 0;
         }
 
         aside {
@@ -154,7 +171,7 @@
             align-items: center;
 
             img {
-                max-width: 200px;
+                max-width: 100px;
             }
             strong {
                 font-size: 15px;
@@ -177,4 +194,21 @@
         opacity: 1;
     }
 }
+
+@-webkit-keyframes bg-pan-bottom {
+    0% {
+      background-position: 50% 0%;
+    }
+    100% {
+      background-position: 50% 100%;
+    }
+  }
+  @keyframes bg-pan-bottom {
+    0% {
+      background-position: 50% 0%;
+    }
+    100% {
+      background-position: 50% 100%;
+    }
+  }
 

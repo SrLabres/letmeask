@@ -10,6 +10,7 @@ import { Link } from 'react-router-dom'
 import { Question } from '../components/Question'
 import { useRoom } from '../hooks/useRoom'
 import { ButtonLogout } from '../components/ButtonLogout'
+import noQuestions from '../assents/imagens/empty-questions.svg'
 import 'firebase/auth';
 
 
@@ -57,18 +58,23 @@ export function Room() {
     }
 
     async function handleLikeQuestion(questionId: string, likeId: string | undefined) {
-        if (likeId) {
-            await database.ref(`rooms/${roomId}/questions/${questionId}/likes/${likeId}`).remove()
-        } else {
-            await database.ref(`rooms/${roomId}/questions/${questionId}/likes`).push({
-                authorId: user?.id,
+        if (user) {
+            if (likeId) {
+                await database.ref(`rooms/${roomId}/questions/${questionId}/likes/${likeId}`).remove()
+            } else {
+                await database.ref(`rooms/${roomId}/questions/${questionId}/likes`).push({
+                    authorId: user?.id,
 
-            })
+                })
+            }
+        } else {
+            signInWithGoogle()
         }
     }
 
 
     return (
+
         <div id="page-room">
             <header>
                 <div className="content">
@@ -100,14 +106,16 @@ export function Room() {
                         ) : (
                             <span>
                                 Para enviar uma pergunta, <button onClick={signInWithGoogle}>faça seu login.</button>
+
                             </span>
                         )}
+
                         <Button type="submit" disabled={!user}>Enviar pergunta</Button>
                     </div>
                 </form>
 
                 <div className="questions-list">
-                    {questions.map(question => {
+                    {questions.length > 0 ? questions.map(question => {
                         return (
                             <Question
                                 key={question.id}
@@ -133,7 +141,10 @@ export function Room() {
                                 )}
                             </Question>
                         )
-                    })}
+                    }) : <div className="noQUestion">
+                        <img src={noQuestions} alt="" />
+                        <p>Nenhuma pergunta por aqui ainda!</p>
+                    </div>}
                 </div>
             </main>
         </div>

@@ -8,7 +8,7 @@ import { Button } from '../components/Button'
 import { RoomCode } from '../components/RoomCode'
 import { useParams } from 'react-router'
 import { useAuth } from '../hooks/useAuth'
-
+import noQuestions from '../assents/imagens/empty-questions.svg'
 import { Link, useHistory } from 'react-router-dom'
 import { Question } from '../components/Question'
 import { useRoom } from '../hooks/useRoom'
@@ -78,7 +78,7 @@ export function AdminRoom() {
 
 
                 <div className="questions-list">
-                    {questions.map(question => {
+                    {questions.length > 0 ? questions.map(question => {
                         return (
                             <Question
                                 key={question.id}
@@ -110,7 +110,10 @@ export function AdminRoom() {
                                 </button>
                             </Question>
                         )
-                    })}
+                    }) : <div className="noQUestion">
+                        <img src={noQuestions} alt="" />
+                        <p>Nenhuma pergunta por aqui ainda!</p>
+                    </div>}
                 </div>
             </main>
         </div>
