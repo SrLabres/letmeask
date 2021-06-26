@@ -5,10 +5,12 @@ import { Button } from '../components/Button'
 import { RoomCode } from '../components/RoomCode'
 import { useParams } from 'react-router'
 import { useAuth } from '../hooks/useAuth'
-import { database } from '../services/firebase'
+import { auth, database } from '../services/firebase'
 import { Link } from 'react-router-dom'
 import { Question } from '../components/Question'
 import { useRoom } from '../hooks/useRoom'
+import { ButtonLogout } from '../components/ButtonLogout'
+import 'firebase/auth';
 
 
 type RoomParams = {
@@ -19,7 +21,7 @@ type RoomParams = {
 
 export function Room() {
 
-    const { user } = useAuth();
+    const { user, signInWithGoogle } = useAuth();
     const params = useParams<RoomParams>();
     const roomId = params.id;
     const [newQuestion, setNewQuestion] = useState('');
@@ -65,6 +67,7 @@ export function Room() {
         }
     }
 
+
     return (
         <div id="page-room">
             <header>
@@ -92,10 +95,11 @@ export function Room() {
                             <div className="user-info">
                                 <img src={user.avatar} alt={user.name} />
                                 <span>{user.name}</span>
+                                <ButtonLogout></ButtonLogout>
                             </div>
                         ) : (
                             <span>
-                                Para enviar uma pergunta, <button>faça seu login.</button>
+                                Para enviar uma pergunta, <button onClick={signInWithGoogle}>faça seu login.</button>
                             </span>
                         )}
                         <Button type="submit" disabled={!user}>Enviar pergunta</Button>
