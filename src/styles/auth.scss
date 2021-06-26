@@ -2,6 +2,7 @@
     display: flex;
     align-items: stretch;
     height: 100vh;
+    
     aside{
         flex: 7;
         background: #835afd;
@@ -13,17 +14,20 @@
     
         img {
             max-width: 320px;
+            animation: fade 1s;
         }
     
         strong {
             font: 700 36px 'Poppins', sans-serif;
+            animation: fade 1s;
         }
     
         p {
             font-size: 24px;
             line-height: 32px;
             margin-top: 16px;
-            color: #f8f8f8
+            color: #f8f8f8;
+            animation: fade 1s;
         }
     }
     
@@ -55,6 +59,7 @@
     }
 
     form {
+        animation: fade 1s;
         input{
             height: 50px;
             border-radius: 8px;
@@ -89,6 +94,7 @@
         font-weight: 500;
         background: #ea4335;
         color: #fff;
+        animation: fade 1s;
 
         display: flex;
         justify-content: center;
@@ -115,7 +121,7 @@
         margin: 32px 0;
         display: flex;
         align-items: center;
-
+        animation: fade 1s;
         &::before {
             content: '';
             flex: 1;
@@ -131,6 +137,44 @@
             background: #a8a8b3;
             margin-left: 16px;
         }
+    }
+}
+
+@media only screen and (max-width: 760px){
+    #page_auth{
+        flex-direction: column;
+        height: 200px;
+        
+        main {
+            padding: 10px 20px;
+        }
+
+        aside {
+            padding: 20px 10px;
+            align-items: center;
+
+            img {
+                max-width: 200px;
+            }
+            strong {
+                font-size: 15px;
+            }
+            p {
+                font-size: 12px;
+                line-height: 10px;
+            }
+        }
+    }
+    
+}
+
+@keyframes fade {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
     }
 }
 

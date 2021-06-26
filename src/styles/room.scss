@@ -111,3 +111,18 @@
         }
     }
 }}
+
+@media only screen and (max-width: 760px){
+    header {
+        .content{
+            flex-direction: column;
+            div {
+                flex-direction: column;
+            }
+        }
+    }
+    main {
+        padding: 0 20px;
+    }
+
+}
