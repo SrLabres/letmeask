@@ -61,7 +61,9 @@ export function useRoom(roomId: string) {
                 }
             })
             setTitle(databaseRoom.title);
-            setQuestions(parsedQuestions);
+            setQuestions(parsedQuestions.sort(function (a, b) {
+                return a.likeCount > b.likeCount ? -1 : a.likeCount < b.likeCount ? 1 : 0;
+            }));
 
         })
 
